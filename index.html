@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Soofty Drink Lab</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="app-header">
+      <h1>Soofty Drink Lab</h1>
+      <p class="tagline">Crée ta canette personnalisée en quelques clics</p>
+    </header>
+
+    <main id="app" class="app">
+      <section class="controls" aria-label="Contrôles">
+        <div class="control-group">
+          <h2>Paramètres de base</h2>
+          <label class="control">
+            <span>Couleur de la canette</span>
+            <input id="baseColor" type="color" value="#dbeafe" />
+          </label>
+          <label class="control">
+            <span>Couleur d'accent</span>
+            <input id="accentColor" type="color" value="#0ea5e9" />
+          </label>
+        </div>
+
+        <div class="control-group">
+          <h2>Texte</h2>
+          <label class="control">
+            <span>Marque</span>
+            <input id="brandText" type="text" placeholder="Soofty" value="Soofty" />
+          </label>
+          <label class="control">
+            <span>Saveur</span>
+            <input id="flavorText" type="text" placeholder="Café" value="Café" />
+          </label>
+          <label class="control">
+            <span>Taille du texte</span>
+            <input id="textSize" type="range" min="16" max="72" value="36" />
+          </label>
+          <label class="control">
+            <span>Couleur du texte</span>
+            <input id="textColor" type="color" value="#0b0b0b" />
+          </label>
+        </div>
+
+        <div class="control-group">
+          <h2>Image</h2>
+          <label class="control">
+            <span>Importer une image (PNG/JPG)</span>
+            <input id="imageInput" type="file" accept="image/*" />
+          </label>
+          <label class="control">
+            <span>Échelle de l'image</span>
+            <input id="imageScale" type="range" min="0.1" max="3" step="0.01" value="1" />
+          </label>
+          <div class="control-row">
+            <button id="resetImage" type="button">Réinitialiser l'image</button>
+          </div>
+          <p class="hint">Astuce: fais glisser l'image directement sur l'aperçu pour la positionner.</p>
+        </div>
+
+        <div class="control-group">
+          <button id="exportPng" class="primary" type="button">Exporter en PNG</button>
+        </div>
+      </section>
+
+      <section class="preview" aria-label="Aperçu">
+        <canvas id="canvas" width="700" height="700" aria-label="Aperçu de la canette"></canvas>
+      </section>
+    </main>
+
+    <footer class="app-footer">
+      <small>© 2025 Soofty Lab</small>
+    </footer>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
