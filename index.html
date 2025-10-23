@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Soofty Drink Lab</title>
+    <meta name="description" content="Laboratoire de boissons gazeuses — créer, calculer, ajuster." />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <header class="app-header">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">🥤</div>
+        <div class="titles">
+          <h1>Soofty Drink Lab</h1>
+          <p>Concevez vos recettes, calculez sucre, calories, caféine et coût.</p>
+        </div>
+      </div>
+      <nav class="app-actions">
+        <button id="btn-new" class="btn btn-primary">Nouvelle recette</button>
+        <button id="btn-export" class="btn">Exporter</button>
+        <label class="btn file-input">
+          Importer
+          <input id="file-import" type="file" accept="application/json" />
+        </label>
+      </nav>
+    </header>
+
+    <main class="layout">
+      <section class="panel" aria-labelledby="ingredients-title">
+        <div class="panel-header">
+          <h2 id="ingredients-title">Bibliothèque d'ingrédients</h2>
+          <div class="panel-actions">
+            <button id="btn-add-ingredient" class="btn">Ajouter ingrédient</button>
+            <button id="btn-load-presets" class="btn">Charger les préréglages</button>
+          </div>
+        </div>
+        <div id="ingredients-list" class="list"></div>
+      </section>
+
+      <section class="panel" aria-labelledby="recipe-title">
+        <div class="panel-header">
+          <h2 id="recipe-title">Recette</h2>
+          <div class="panel-actions">
+            <button id="btn-add-component" class="btn">Ajouter un composant</button>
+          </div>
+        </div>
+        <div id="recipe-list" class="list"></div>
+      </section>
+
+      <section class="panel" aria-labelledby="stats-title">
+        <div class="panel-header">
+          <h2 id="stats-title">Statistiques</h2>
+        </div>
+        <div id="stats" class="stats-grid">
+          <!-- Dynamically filled -->
+        </div>
+      </section>
+    </main>
+
+    <template id="tpl-ingredient-row">
+      <div class="row ingredient-row">
+        <div class="row-main">
+          <div class="color-dot" data-role="color" aria-hidden="true"></div>
+          <input data-role="name" class="input" placeholder="Nom" />
+          <select data-role="category" class="input">
+            <option value="base">Base</option>
+            <option value="sucrant">Sucrant</option>
+            <option value="acide">Acide</option>
+            <option value="arôme">Arôme</option>
+            <option value="caféine">Caféine</option>
+            <option value="autre">Autre</option>
+          </select>
+        </div>
+        <div class="row-metrics">
+          <label class="metric">
+            <span>Sucre g/100ml</span>
+            <input data-role="sugar" type="number" step="0.1" class="input right" />
+          </label>
+          <label class="metric">
+            <span>Calories/100ml</span>
+            <input data-role="calories" type="number" step="0.1" class="input right" />
+          </label>
+          <label class="metric">
+            <span>Caféine mg/100ml</span>
+            <input data-role="caffeine" type="number" step="0.1" class="input right" />
+          </label>
+          <label class="metric">
+            <span>Coût €/L</span>
+            <input data-role="cost" type="number" step="0.01" class="input right" />
+          </label>
+          <label class="metric">
+            <span>Couleur</span>
+            <input data-role="color-input" type="color" class="input color" />
+          </label>
+        </div>
+        <div class="row-actions">
+          <button data-role="use" class="btn">Utiliser</button>
+          <button data-role="delete" class="btn btn-danger" aria-label="Supprimer">Supprimer</button>
+        </div>
+      </div>
+    </template>
+
+    <template id="tpl-recipe-row">
+      <div class="row recipe-row">
+        <select data-role="ingredient" class="input"></select>
+        <label class="metric">
+          <span>Volume (ml)</span>
+          <input data-role="volume" type="number" step="1" class="input right" />
+        </label>
+        <div class="row-actions">
+          <button data-role="remove" class="btn btn-danger" aria-label="Retirer">Retirer</button>
+        </div>
+      </div>
+    </template>
+
+    <script src="./app.js" type="module"></script>
+  </body>
+</html>
